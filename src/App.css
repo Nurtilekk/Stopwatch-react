@@ -2,6 +2,10 @@ body {
   background:#2C3E50;
 }
 
+li, ul {
+  list-style: none;
+}
+
 * {
   padding: 0px;
   margin: 0px;
@@ -60,6 +64,11 @@ body {
   color: #FFC900;
 }
 
+.stopwatch .stopwatch-btn-purp{
+  border: 2px solid rgb(196, 14, 202);
+  color: rgb(196, 14, 202);
+}
+
 .stopwatch .stopwatch-btn-gre{
   border: 2px solid #00ABA9;
   color: #00ABA9;
@@ -78,4 +87,22 @@ body {
   background: #00ABA9;
   border: 2px solid #00ABA9;
   color: #fff;
+}
+
+.stopwatch .stopwatch-btn-purp:hover {
+  background: rgb(196, 14, 202);
+  border: 2px solid rgb(196, 14, 202);
+  color: #fff;
+}
+
+
+.laps {
+  margin: 0 150px;
+}
+
+.laps__item {
+  margin-top: 5px;
+  border: 2px solid #00ABA9;
+  width: auto;
+  font-weight: bold;
 }

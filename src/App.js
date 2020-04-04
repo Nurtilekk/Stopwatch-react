@@ -3,11 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 import DisplayComponent from './Components/DisplayComponent';
 import BtnDisplayComponent from './Components/BtnDisplayComponent';
+import Laps from './Components/Laps/Laps';
 
 function App() {
   const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
-  const [interv, setInterv] = useState()
-  const [status, setStatus] = useState(0)
+  const [interv, setInterv] = useState();
+  const [status, setStatus] = useState(0);
+  const [laps, setLaps] = useState([]);
+  const [lap, setLap] = useState({ms:0, s:0, m:0, h:0});
+  
+  let updatedMs = time.ms, updatedS = time.s,updatedM = time.m,updatedH = time.h;
 
   const start = () => {
     run();
@@ -15,7 +20,6 @@ function App() {
     setInterv(setInterval(run, 10))
   }
 
-  let updatedMs = time.ms, updatedS = time.s,updatedM = time.m,updatedH = time.h;
 
   const run = () => {
     if(updatedM === 60){
@@ -33,16 +37,35 @@ function App() {
     updatedMs++;
     return setTime({ms:updatedMs, s:updatedS, m:updatedM, h:updatedH});
   }
+  
+  const addLap = () => {
+    setLap({
+      ms: updatedMs,
+      s: updatedS,
+      m: updatedM,
+      h: updatedH
+    })
+    setLaps([
+      ...laps, lap
+    ])
+  }
+
+  
 
   const stop = () => {
     clearInterval(interv);
     setStatus(2)
+  }
+  
+  const clearLaps = () => {
+    
   }
 
   const reset = () => {
     clearInterval(interv);
     setStatus(0)
     setTime({ms:0, s:0, m:0, h:0})
+    
   }
 
   const resume = () => start();
@@ -52,7 +75,15 @@ function App() {
       <div className = "clock-holder">
         <div className = "stopwatch">
           <DisplayComponent time = {time}/>
-          <BtnDisplayComponent resume = {resume} reset = {reset} stop = {stop} status = {status}start = {start}/>
+          <BtnDisplayComponent addLap = {addLap} 
+          resume = {resume} 
+          reset = {reset} 
+          stop = {stop} 
+          status = {status}
+          start = {start}/>
+          <Laps
+          lap = {lap }
+          laps = {laps} />
         </div>
       </div>
     </div>

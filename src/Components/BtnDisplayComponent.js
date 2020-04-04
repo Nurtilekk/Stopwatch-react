@@ -7,6 +7,7 @@ export default function BtnDisplayComponent(props){
       {(props.status === 1) ?  
       <div>
         <button className = "stopwatch-btn stopwatch-btn-red" onClick = {props.stop} >Stop</button>
+        <button className = "stopwatch-btn stopwatch-btn-purp" onClick = {props.addLap} >Laps</button>
         <button className = "stopwatch-btn stopwatch-btn-yel" onClick = {props.reset} >Reset</button>
       </div>
       : ""}
