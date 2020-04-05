@@ -1,93 +1,88 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import DisplayComponent from './Components/DisplayComponent';
-import BtnDisplayComponent from './Components/BtnDisplayComponent';
-import Laps from './Components/Laps/Laps';
+import React, {useState} from 'react'
+import logo from './logo.svg'
+import './App.css'
+import DisplayComponent from './Components/DisplayComponent'
+import BtnDisplayComponent from './Components/BtnDisplayComponent'
+import Laps from './Components/Laps/Laps'
 
 function App() {
-  const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
-  const [interv, setInterv] = useState();
-  const [status, setStatus] = useState(0);
-  const [laps, setLaps] = useState([]);
-  const [lap, setLap] = useState({ms:0, s:0, m:0, h:0});
-  
-  let updatedMs = time.ms, updatedS = time.s,updatedM = time.m,updatedH = time.h;
+  const [time, setTime] = useState({ms: 0, s: 0, m: 0, h: 0})
+  const [interv, setInterv] = useState()
+  const [status, setStatus] = useState(0)
+  const [laps, setLaps] = useState([])
+
+  let updatedMs = time.ms,
+    updatedS = time.s,
+    updatedM = time.m,
+    updatedH = time.h
 
   const start = () => {
-    run();
+    run()
     setStatus(1)
     setInterv(setInterval(run, 10))
   }
 
-
   const run = () => {
-    if(updatedM === 60){
-      updatedH++;
-      updatedM = 0;
+    if (updatedM === 60) {
+      updatedH++
+      updatedM = 0
     }
-    if(updatedS === 60){
-      updatedM++;
-      updatedS = 0;
+    if (updatedS === 60) {
+      updatedM++
+      updatedS = 0
     }
-    if(updatedMs === 100){
-      updatedS++;
-      updatedMs = 0;
+    if (updatedMs === 100) {
+      updatedS++
+      updatedMs = 0
     }
-    updatedMs++;
-    return setTime({ms:updatedMs, s:updatedS, m:updatedM, h:updatedH});
+    updatedMs++
+    return setTime({ms: updatedMs, s: updatedS, m: updatedM, h: updatedH})
   }
-  
+
   const addLap = () => {
-    setLap({
-      ms: updatedMs,
-      s: updatedS,
-      m: updatedM,
-      h: updatedH
-    })
     setLaps([
-      ...laps, lap
+      ...laps,
+      {
+        ms: updatedMs,
+        s: updatedS,
+        m: updatedM,
+        h: updatedH,
+      },
     ])
   }
 
-  
-
   const stop = () => {
-    clearInterval(interv);
+    clearInterval(interv)
     setStatus(2)
-  }
-  
-  const clearLaps = () => {
-    
   }
 
   const reset = () => {
-    clearInterval(interv);
+    clearInterval(interv)
     setStatus(0)
-    setTime({ms:0, s:0, m:0, h:0})
-    
+    setTime({ms: 0, s: 0, m: 0, h: 0})
+    setLaps([])
   }
-
-  const resume = () => start();
+  
+  const resume = () => start()
 
   return (
-    <div className = "main-section">
-      <div className = "clock-holder">
-        <div className = "stopwatch">
-          <DisplayComponent time = {time}/>
-          <BtnDisplayComponent addLap = {addLap} 
-          resume = {resume} 
-          reset = {reset} 
-          stop = {stop} 
-          status = {status}
-          start = {start}/>
-          <Laps
-          lap = {lap }
-          laps = {laps} />
+    <div className="main-section">
+      <div className="clock-holder">
+        <div className="stopwatch">
+          <DisplayComponent time={time} />
+          <BtnDisplayComponent
+            addLap={addLap}
+            resume={resume}
+            reset={reset}
+            stop={stop}
+            status={status}
+            start={start}
+          />
+          <Laps laps={laps} />
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
