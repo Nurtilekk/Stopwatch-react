@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import logo from './logo.svg'
 import './App.css'
 import DisplayComponent from './Components/DisplayComponent'
 import BtnDisplayComponent from './Components/BtnDisplayComponent'

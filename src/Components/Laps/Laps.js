@@ -3,7 +3,6 @@ import Lap from '../Lap/Lap';
 
 export default function Laps(props) {
   const { laps } = props;
-  console.log(laps)
   
   return (
     <ul className = "laps">

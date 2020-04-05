@@ -11,7 +11,6 @@ li, ul {
   margin: 0px;
   box-sizing: border-box;
 }
-
 .main-section {
   background: transparent;
   max-width: 600px;
@@ -19,14 +18,12 @@ li, ul {
   height: 500px;
   margin: 30px auto;
 }
-
 .clock-holder {
   width: 100%;
   background: #fff;
   margin: 30px auto;
   position: relative;
 }
-
 .stopwatch {
   padding: 60px 0px;
   text-align: center;
@@ -41,7 +38,6 @@ li, ul {
   border-radius: 5px;
   width: 70px;
 }
-
 .stopwatch .stopwatch-btn {
   background: #fff;
   margin-top: 30px;
@@ -62,12 +58,10 @@ li, ul {
   border: 2px solid #FFC900;
   color: #FFC900;
 }
-
 .stopwatch .stopwatch-btn-purp{
   border: 2px solid rgb(196, 14, 202);
   color: rgb(196, 14, 202);
 }
-
 .stopwatch .stopwatch-btn-gre{
   border: 2px solid #00ABA9;
   color: #00ABA9;
@@ -87,17 +81,14 @@ li, ul {
   border: 2px solid #00ABA9;
   color: #fff;
 }
-
 .stopwatch .stopwatch-btn-purp:hover {
   background: rgb(196, 14, 202);
   border: 2px solid rgb(196, 14, 202);
   color: #fff;
 }
-
 .laps {
   margin: 0 150px;
 }
-
 .laps__item {
   margin-top: 5px;
   border: 2px solid #00ABA9;
